@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: sentinelone
+  role_name: sentinelone_client
   author: Christian Stankowic
   namespace: stdevel
   description: Installs the SentinelONE agent
