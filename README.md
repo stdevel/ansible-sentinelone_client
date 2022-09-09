@@ -22,7 +22,7 @@ No dependencies.
 ```yml
 - hosts: clients
   roles:
-    - role: sentinelone
+    - role: stdevel.sentinelone_client
       sentinelone_filename: SentinelAgent_linux_v21_10_3_3.rpm
       sentinelone_token: trustno1
 ```
@@ -32,7 +32,7 @@ Repository installation:
 ```yml
 - hosts: clients
   roles:
-    - role: sentinelone
+    - role: stdevel.sentinelone_client
       sentinelone_filename: https://simone.giertz.dev/SentinelAgent_linux_v13_37.deb
       sentinelone_token: trustno1
 ```
