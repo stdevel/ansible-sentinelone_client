@@ -7,4 +7,3 @@
     mode: '0644'
     state: touch
   become: true
-  when: token_set.changed
