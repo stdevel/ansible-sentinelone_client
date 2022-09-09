@@ -1,0 +1,13 @@
+---
+# Yep, we really need to use rpm directly as yum/dnf
+# won't install packages without digests
+- name: Install package
+  command: "rpm -ivh --nodigest /tmp/{{ sentinelone_filename | basename }}"
+  register: rpmout
+  changed_when:
+    - "'Updating / installing' in rpmout.stdout"
+  failed_when:
+    - rpmout.failed
+    - "'is already installed' not in rpmout.stderr"
+  ignore_errors: true
+  become: true
