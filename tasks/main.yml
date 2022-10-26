@@ -7,6 +7,14 @@
     url: "{{ sentinelone_filename }}"
     dest: "/tmp/{{ sentinelone_filename | basename }}"
     mode: 0644
+  when: "'http' in sentinelone_filename"
+
+- name: Copy installation package
+  copy:
+    src: "{{ sentinelone_filename }}"
+    dest: "/tmp/{{ sentinelone_filename | basename }}"
+  when: "'http' not in sentinelone_filename"
+
 
 - name: Include installation tasks
   include_tasks: "install_{{ ansible_os_family | regex_replace(' ', '_') | lower }}.yml"
