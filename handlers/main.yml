@@ -1,6 +1,6 @@
 ---
 - name: Create initialization file
-  file:
+  ansible.builtin.file:
     path: /opt/sentinelone/.INITIALIZATION_COMPLETE
     owner: root
     group: root
