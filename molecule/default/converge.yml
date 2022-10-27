@@ -1,7 +1,17 @@
 ---
 - name: Converge
   hosts: all
-  tasks:
-    - name: Include sentinelone_client
-      include_role:
-        name: sentinelone_client
+  pre_tasks:
+    - name: Set SentinelONE client installation file (Debian)
+      ansible.builtin.set_fact:
+        file_sentinelone: sentinelone_latest.deb
+      when: ansible_os_family == 'Debian'
+
+    - name: Set SentinelONE client installation file (Red Hat)
+      ansible.builtin.set_fact:
+        file_sentinelone: sentinelone_latest.rpm
+      when: ansible_os_family == 'RedHat'
+
+  roles:
+    - role: stdevel.sentinelone_client
+      sentinelone_filename: "{{ file_sentinelone }}"
