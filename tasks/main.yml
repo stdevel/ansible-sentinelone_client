@@ -2,6 +2,18 @@
 - name: Include distribution-specific variables
   ansible.builtin.include_vars: "{{ ansible_os_family | regex_replace(' ', '_') | lower }}.yml"
 
+- name: Get dmesg output
+  ansible.builtin.command: dmesg
+  changed_when: false
+  become: true
+  register: dmesg_output
+
+- name: Assert that no function tracing issues occured
+  ansible.builtin.assert:
+    that:
+      - "'FUNCTION TRACING IS CORRUPTED' not in dmesg_output.stdout"
+    fail_msg: 'System instability detected, function tracing seems corrupted'
+
 - name: Download installation package
   ansible.builtin.get_url:
     url: "{{ sentinelone_filename }}"
