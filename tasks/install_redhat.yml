@@ -1,4 +1,10 @@
 ---
+- name: Import GPG key
+  ansible.builtin.rpm_key:
+    key: "{{ sentinelone_gpgkey }}"
+  become: true
+  when: sentinelone_gpgkey
+
 # Yep, we really need to use rpm directly as yum/dnf
 # won't install packages without digests
 - name: Install package

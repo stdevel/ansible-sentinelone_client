@@ -12,6 +12,7 @@ No requirements.
 | -------- | ------- | ----------- |
 | `sentinelone_filename` | *(empty)* | Package file to install |
 | `sentinelone_token` | *(empty)* | Group/Site token |
+| `sentinelone_gpgkey` | *(empty)* | GPG signing key to import |
 
 ## Dependencies
 

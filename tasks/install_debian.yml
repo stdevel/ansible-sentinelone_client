@@ -1,4 +1,10 @@
 ---
+- name: Import GPG key
+  ansible.builtin.apt_key:
+    url: "{{ sentinelone_gpgkey }}"
+  become: true
+  when: sentinelone_gpgkey
+
 - name: Install package
   ansible.builtin.apt:
     deb: "/tmp/{{ sentinelone_filename | basename }}"

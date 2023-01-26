@@ -15,3 +15,5 @@
   roles:
     - role: stdevel.sentinelone_client
       sentinelone_filename: "{{ file_sentinelone }}"
+      # sentinelone_token: '...'
+      # sentinelone_gpgkey: '...'
