@@ -36,5 +36,7 @@ def test_registration(host):
         # check that URL and UUID are not undefined
         _url = [x for x in cmd if "URL" in x]
         _uuid = [x for x in cmd if "UUID" in x]
+        _connect = [x for x in cmd if "Connectivity" in x]
         assert "undefined" not in _url[0]
         assert "undefined" not in _uuid[0]
+        assert "Off" not in _connect[0]
