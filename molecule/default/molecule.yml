@@ -4,11 +4,11 @@ dependency:
 driver:
   name: vagrant
 platforms:
-  - name: ubuntu
+  - name: s1-ubuntu
     box: generic/ubuntu2204
-  - name: fedora
-    box: generic/fedora36
-  - name: almalinux
+  - name: s1-fedora
+    box: generic/fedora37
+  - name: s1-almalinux
     box: almalinux/8
 provisioner:
   name: ansible
