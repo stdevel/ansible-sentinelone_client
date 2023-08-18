@@ -10,6 +10,8 @@ platforms:
     box: generic/fedora38
   - name: s1-almalinux
     box: almalinux/9
+  - name: s1-opensuse
+    box: opensuse/Tumbleweed.x86_64
 provisioner:
   name: ansible
 verifier:

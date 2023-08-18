@@ -1,0 +1,19 @@
+---
+- name: Import GPG key
+  ansible.builtin.rpm_key:
+    key: "{{ sentinelone_gpgkey }}"
+  become: true
+  when: sentinelone_gpgkey
+
+# Yep, we really need to use rpm directly as zypper
+# won't install packages without digests
+- name: Install package
+  ansible.builtin.command: "rpm -ivh --nodigest /tmp/{{ sentinelone_filename | basename }}"
+  register: rpmout
+  changed_when:
+    - "'Updating / installing' in rpmout.stdout"
+  failed_when:
+    - rpmout.failed
+    - "'is already installed' not in rpmout.stderr"
+  ignore_errors: true
+  become: true
