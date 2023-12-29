@@ -31,6 +31,11 @@
 - name: Include installation tasks
   ansible.builtin.include_tasks: "install_{{ ansible_os_family | regex_replace(' ', '_') | lower }}.yml"
 
+- name: Remove installation package
+  ansible.builtin.file:
+    path: "/tmp/{{ sentinelone_filename | basename }}"
+    state: absent
+
 - name: Set Group/Site token
   ansible.builtin.command: "/opt/sentinelone/bin/sentinelctl management token set {{ sentinelone_token }}"
   args:
