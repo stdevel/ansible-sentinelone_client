@@ -5,9 +5,10 @@
   become: true
   when: sentinelone_gpgkey
 
-# Yep, we really need to use rpm directly as zypper
-# won't install packages without digests
-- name: Install package
+- name: Include digest tasks
+  ansible.builtin.include_tasks: digest.yml
+
+- name: Install package (digest)
   ansible.builtin.command: "rpm -ivh --nodigest /tmp/{{ sentinelone_filename | basename }}"
   register: rpmout
   changed_when:
@@ -16,4 +17,10 @@
     - rpmout.failed
     - "'is already installed' not in rpmout.stderr"
   ignore_errors: true
+  become: true
+  when: sentinelone_digest is defined
+
+- name: Install package
+  community.general.zypper:
+    name: "/tmp/{{ sentinelone_filename | basename }}"
   become: true
