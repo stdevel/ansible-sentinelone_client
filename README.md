@@ -10,9 +10,9 @@ No requirements.
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| `sentinelone_filename` | *(empty)* | Package file to install |
-| `sentinelone_token` | *(empty)* | Group/Site token |
-| `sentinelone_gpgkey` | *(empty)* | GPG signing key to import |
+| `sentinelone_client_filename` | *(empty)* | Package file to install |
+| `sentinelone_client_token` | *(empty)* | Group/Site token |
+| `sentinelone_client_gpgkey` | *(empty)* | GPG signing key to import |
 
 ## Dependencies
 
@@ -24,8 +24,8 @@ No dependencies.
 - hosts: clients
   roles:
     - role: stdevel.sentinelone_client
-      sentinelone_filename: SentinelAgent_linux_v21_10_3_3.rpm
-      sentinelone_token: trustno1
+      sentinelone_client_filename: SentinelAgent_linux_v21_10_3_3.rpm
+      sentinelone_client_token: trustno1
 ```
 
 Repository installation:
@@ -34,8 +34,8 @@ Repository installation:
 - hosts: clients
   roles:
     - role: stdevel.sentinelone_client
-      sentinelone_filename: https://simone.giertz.dev/SentinelAgent_linux_v13_37.deb
-      sentinelone_token: trustno1
+      sentinelone_client_filename: https://simone.giertz.dev/SentinelAgent_linux_v13_37.deb
+      sentinelone_client_token: trustno1
 ```
 
 ## Development / testing
