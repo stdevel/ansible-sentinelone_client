@@ -12,8 +12,13 @@
         file_sentinelone: sentinelone_latest.rpm
       when: ansible_os_family == 'RedHat'
 
+    - name: Set SentinelONE client installation file (SUSE)
+      ansible.builtin.set_fact:
+        file_sentinelone: sentinelone_latest.rpm
+      when: ansible_os_family == 'Suse'
+
   roles:
     - role: stdevel.sentinelone_client
-      sentinelone_filename: "{{ file_sentinelone }}"
-      # sentinelone_token: '...'
-      # sentinelone_gpgkey: '...'
+      sentinelone_client_filename: "{{ file_sentinelone }}"
+      # sentinelone_client_token: '...'
+      # sentinelone_client_gpgkey: '...'
