@@ -49,7 +49,7 @@
   register: customer_id_output
   changed_when: "'customer id successfully set' in customer_id_output.stdout|lower"
   become: true
-  when: sentinelone_client_customer_id | lenght > 0
+  when: sentinelone_client_customer_id | length > 0
 
 - name: Start agent
   ansible.builtin.command: /opt/sentinelone/bin/sentinelctl control start
