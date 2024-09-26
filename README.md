@@ -2,6 +2,8 @@
 
 Installs and registers the SentinelOne Endpoint agent.
 
+This role is **deprecated** and was replaced with [`sva.sentinelone.sentinelone_client_legacy`](https://galaxy.ansible.com/ui/repo/published/sva/sentinelone/content/role/sentinelone_client_legacy/) and - even better - [`sva.sentinelone.install_agent`](https://galaxy.ansible.com/ui/repo/published/sva/sentinelone/content/role/install_agent/).
+
 ## Requirements
 
 No requirements.
