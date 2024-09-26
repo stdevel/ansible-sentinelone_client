@@ -18,7 +18,7 @@
   ansible.builtin.get_url:
     url: "{{ sentinelone_client_filename }}"
     dest: "/tmp/{{ sentinelone_client_filename | basename }}"
-    mode: 0644
+    mode: '0644'
   when: "'http' in sentinelone_client_filename"
 
 - name: Copy installation package
@@ -35,6 +35,16 @@
   ansible.builtin.file:
     path: "/tmp/{{ sentinelone_client_filename | basename }}"
     state: absent
+
+- name: Check if we need to force a new token
+  ansible.builtin.file:
+    path: /opt/sentinelone/.INITIALIZATION_COMPLETE
+    state: absent
+  become: true
+  when:
+    - sentinelone_client_force_new_token
+    - sentinelone_client_token is defined
+    - sentinelone_client_token | length > 0
 
 - name: Set Group/Site token
   ansible.builtin.command: "/opt/sentinelone/bin/sentinelctl management token set {{ sentinelone_client_token }}"
